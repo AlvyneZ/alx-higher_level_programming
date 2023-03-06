@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "lists.h"
 
-#define LIST_CHCK_CCL_BUFFER_SIZE 256
+#define LIST_CHCK_CCL_BUFFER_SIZE 10
 
 /**
  * check_cycle - checks if a linked list contains a cycle
