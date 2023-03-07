@@ -1,3 +1,2 @@
 #!/usr/bin/python3
-for i in range(26):
-	print(f"{chr(97+i):s}", end="")
+print(f"{''.join([chr(97+i) for i in range(26)]):s}", end="")
