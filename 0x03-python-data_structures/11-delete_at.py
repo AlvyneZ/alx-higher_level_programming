@@ -10,7 +10,7 @@ def delete_at(my_list=[], idx=0):
         New list without unwanted element
     """
     if idx < 0 or idx > (len(my_list) - 1):
-        return None
+        return my_list
     cp = my_list.copy()
     my_list.clear()
     for i in range(len(cp)):
