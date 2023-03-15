@@ -17,7 +17,7 @@ def best_score(a_dictionary):
     values = list(a_dictionary.values())
     max_value = max(values)
     max_value_index = values.index(max_value)
-    return keys[max_value_index] 
+    return keys[max_value_index]
 
 
 if __name__ == "__main__":
