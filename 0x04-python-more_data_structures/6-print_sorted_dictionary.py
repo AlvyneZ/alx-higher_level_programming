@@ -1,15 +1,13 @@
 #!/usr/bin/python3
 def print_sorted_dictionary(a_dictionary):
-    """Function for getting the number of keys in a dict
+    """Function for sorting and printing a dict by the keys
 
     Args:
         a_dictionary: the dictionary
-
-    Returns:
-        The number of keys in a_dictionary
     """
-    for key, value in sorted(a_dictionary.items()):
-        print(f"{key}: {value}")
+    if type(a_dictionary) is dict:
+        for key, value in sorted(a_dictionary.items()):
+            print(f"{key}: {value}")
 
 
 if __name__ == "__main__":
