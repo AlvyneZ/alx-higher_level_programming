@@ -13,13 +13,11 @@ def best_score(a_dictionary):
     """
     if type(a_dictionary) != dict:
         return "None"
-    max_key = "None"
-    max_value = -MAXINT
-    for key, value in a_dictionary.items():
-        if value > max_value:
-            max_key = key
-            max_value = value
-    return max_key
+    keys = list(a_dictionary.keys())
+    values = list(a_dictionary.values())
+    max_value = max(values)
+    max_value_index = values.index(max_value)
+    return keys[max_value_index] 
 
 
 if __name__ == "__main__":
