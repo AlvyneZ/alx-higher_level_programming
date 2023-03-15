@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-from xmlrpc.client import MAXINT
-
-
 def best_score(a_dictionary):
     """Function for getting the key of the largest element in a dict
 
