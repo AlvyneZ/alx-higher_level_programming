@@ -11,7 +11,7 @@ def best_score(a_dictionary):
     Returns:
         The dictionary without the deleted key
     """
-    if type(a_dictionary) != dict:
+    if type(a_dictionary) != dict or len(a_dictionary) == 0:
         return "None"
     keys = list(a_dictionary.keys())
     values = list(a_dictionary.values())
