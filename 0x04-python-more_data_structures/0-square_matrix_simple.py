@@ -4,6 +4,9 @@ def square_matrix_simple(matrix=[]):
 
     Args:
         matrix: 2D List whose elemnts are squared
+
+    Returns:
+        The new list with the squared elements
     """
     return [[element**2 for element in row] for row in matrix]
 
