@@ -8,10 +8,7 @@ def uniq_add(my_list=[]):
     Returns:
         The sum of the unique elements
     """
-    sum = 0
-    for i in range(len(my_list)):
-        sum += my_list[i] if my_list[i] not in my_list[:i] else 0
-    return sum
+    return sum(set(my_list))
 
 
 if __name__ == "__main__":
