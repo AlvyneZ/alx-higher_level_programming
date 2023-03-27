@@ -10,12 +10,12 @@ def safe_print_list(my_list=[], x=0):
         The number of printed elements
     """
     i = 0
-    for i in range(0, x):
+    while i < x:
         try:
             print(my_list[i], end="")
+            i += 1
         except IndexError:
-            print("")
-            return i
+            break
     print("")
     return i
 
