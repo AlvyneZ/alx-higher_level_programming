@@ -67,7 +67,7 @@ class Node:
         Args:
             next_node (Node): next node of the linked list
         """
-        if (next_node != None) and (type(next_node) != Node):
+        if (next_node is not None) and (type(next_node) != Node):
             raise(TypeError("next_node must be a Node object"))
         self.__next_node = next_node
 
@@ -93,16 +93,16 @@ class SinglyLinkedList:
         Args:
             value (integer): value to be stored by new node
         """
-        if self.__head == None:
+        if self.__head is None:
             self.__head = Node(value)
             return
         prev = None
         cur = self.__head
-        while (cur != None) and (cur.data < value):
+        while (cur is not None) and (cur.data < value):
             prev = cur
             cur = cur.next_node
         new_node = Node(value, cur)
-        if prev == None:
+        if prev is None:
             self.__head = new_node
         else:
             prev.next_node = new_node
@@ -111,15 +111,14 @@ class SinglyLinkedList:
         """
         Converts the singly linked to a printable string of node values
         """
-        if self.__head == None:
+        if self.__head is None:
             return ""
         array = []
         cur = self.__head
-        while cur != None:
+        while cur is not None:
             array.append("{:d}".format(cur.data))
             cur = cur.next_node
         return "\n".join(array)
-        
 
 
 if __name__ == "__main__":
