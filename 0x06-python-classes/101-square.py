@@ -108,7 +108,7 @@ class Square:
         Converts the square to a printable stirng
         """
         if self.__size == 0:
-            return "\n"
+            return ""
         string = []
         for y in range(0, self.__position[1]):
             string.append("\n")
