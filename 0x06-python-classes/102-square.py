@@ -85,7 +85,7 @@ class Square:
         """
         return self.area() <= other.area()
 
-    def __gt__(self, other):
+    def __ge__(self, other):
         """
         Greatr/equal comparison between squares based on area when '>=' is used
         """
