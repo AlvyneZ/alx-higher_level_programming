@@ -12,6 +12,7 @@ class Square:
         self.__size (integer): side length of a square instance
         size: getter and setter for self.__size
         area: calculates the area of the current square instance
+        my_print: prints out the current squarte instance
     """
     def __init__(self, size=0):
         """
@@ -55,16 +56,30 @@ class Square:
         """
         return self.__size ** 2
 
+    def my_print(self):
+        """
+        Prints out the square in stdout with '#'
+        """
+        if self.__size == 0:
+            print("")
+        for i in range(0, self.__size):
+            for j in range(0, self.__size):
+                print("#", end="")
+            print("")
+
 
 if __name__ == "__main__":
-    my_square = Square(89)
-    print("Area: {} for size: {}".format(my_square.area(), my_square.size))
+    my_square = Square(3)
+    my_square.my_print()
 
-    my_square.size = 3
-    print("Area: {} for size: {}".format(my_square.area(), my_square.size))
+    print("--")
 
-    try:
-        my_square.size = "5 feet"
-        print("Area: {} for size: {}".format(my_square.area(), my_square.size))
-    except Exception as e:
-        print(e)
+    my_square.size = 10
+    my_square.my_print()
+
+    print("--")
+
+    my_square.size = 0
+    my_square.my_print()
+
+    print("--")
