@@ -14,7 +14,7 @@ class Square:
             a square instance
         area: calculates the area of the current square instance
         my_print: prints out the current squarte instance
-    
+
     Properties:
         size: getter and setter for self.__size
         position: getter and setter for self.__position
