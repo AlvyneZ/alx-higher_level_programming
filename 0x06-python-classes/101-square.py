@@ -118,7 +118,7 @@ class Square:
             for j in range(0, self.__size):
                 string.append("#")
             string.append("\n")
-        return "".join(string)
+        return "".join(string[:-1])
 
 
 if __name__ == "__main__":
