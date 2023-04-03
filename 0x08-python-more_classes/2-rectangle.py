@@ -14,6 +14,8 @@ class Rectangle:
         self.__width (integer): width of a rectangle instance
         height: getter and setter for self.__height
         width: getter and setter for self.__width
+        area: calculates the area of the current rectangle instance
+        perimeter: calculates the perimeter of the current rectangle instance
     """
     def __init__(self, width=0, height=0):
         """
@@ -74,11 +76,35 @@ class Rectangle:
             raise(ValueError("height must be >= 0"))
         self.__height = height
 
+    def area(self):
+        """
+        Calculates the area of a rectangle instance
+
+        Returns:
+            The area of the current rectangle instance
+        """
+        return self.__height * self.__width
+
+    def perimeter(self):
+        """
+        Calculates the perimeter of a rectangle instance
+
+        Returns:
+            The perimeter of the current rectangle instance
+        """
+        if (self.__height == 0) or (self.__width == 0):
+            return 0
+        return 2 * (self.__height + self.__width)
+
 
 if __name__ == "__main__":
     my_rectangle = Rectangle(2, 4)
-    print(my_rectangle.__dict__)
+    print("Area: {} - Perimeter: {}".format(
+        my_rectangle.area(), my_rectangle.perimeter()))
+
+    print("--")
 
     my_rectangle.width = 10
     my_rectangle.height = 3
-    print(my_rectangle.__dict__)
+    print("Area: {} - Perimeter: {}".format(
+        my_rectangle.area(), my_rectangle.perimeter()))
