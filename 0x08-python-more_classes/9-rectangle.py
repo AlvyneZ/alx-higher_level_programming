@@ -19,6 +19,7 @@ class Rectangle:
         area: calculates the area of the current rectangle instance
         perimeter: calculates the perimeter of the current rectangle instance
         bigger_or_equal: returns the biggest rectangle based on the area
+        square: creates a rectangle of equal height and width
     """
     number_of_instances = 0
     print_symbol = '#'
@@ -119,6 +120,16 @@ class Rectangle:
             return rect_2
         return rect_1
 
+    @classmethod
+    def square(cls, size=0):
+        """
+        Creates a rectangle of equal height and width
+
+        Returns:
+            The rectangle instance of dimensions equal to size
+        """
+        return cls(width=size, height=size)
+
     def __str__(self):
         """
         Converts the rectangle to a printable stirng
@@ -148,19 +159,7 @@ class Rectangle:
 
 
 if __name__ == "__main__":
-    my_rectangle_1 = Rectangle(8, 4)
-    my_rectangle_2 = Rectangle(2, 3)
-
-    if my_rectangle_1 is Rectangle.bigger_or_equal(
-            my_rectangle_1, my_rectangle_2):
-        print("my_rectangle_1 is bigger or equal to my_rectangle_2")
-    else:
-        print("my_rectangle_2 is bigger than my_rectangle_1")
-
-    my_rectangle_2.width = 10
-    my_rectangle_2.height = 5
-    if my_rectangle_1 is Rectangle.bigger_or_equal(
-            my_rectangle_1, my_rectangle_2):
-        print("my_rectangle_1 is bigger or equal to my_rectangle_2")
-    else:
-        print("my_rectangle_2 is bigger than my_rectangle_1")
+    my_square = Rectangle.square(5)
+    print("Area: {} - Perimeter: {}".format(
+        my_square.area(), my_square.perimeter()))
+    print(my_square)
