@@ -95,7 +95,7 @@ class Rectangle:
         if (self.__height == 0) or (self.__width == 0):
             return 0
         return 2 * (self.__height + self.__width)
-        
+
     def __str__(self):
         """
         Converts the rectangle to a printable stirng
@@ -112,7 +112,8 @@ class Rectangle:
 
 if __name__ == "__main__":
     my_rectangle = Rectangle(2, 4)
-    print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
+    print("Area: {} - Perimeter: {}".format(
+        my_rectangle.area(), my_rectangle.perimeter()))
 
     print(str(my_rectangle))
     print(repr(my_rectangle))
