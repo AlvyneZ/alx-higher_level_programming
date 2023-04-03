@@ -128,7 +128,7 @@ class Rectangle:
         Returns:
             The rectangle instance of dimensions equal to size
         """
-        return cls(width=size, height=size)
+        return Rectangle(size, size)
 
     def __str__(self):
         """
@@ -163,3 +163,11 @@ if __name__ == "__main__":
     print("Area: {} - Perimeter: {}".format(
         my_square.area(), my_square.perimeter()))
     print(my_square)
+    
+    my_square_2 = my_square.square(6)
+    print("Area: {} - Perimeter: {}".format(
+        my_square.area(), my_square.perimeter()))
+    print("Area: {} - Perimeter: {}".format(
+        my_square_2.area(), my_square_2.perimeter()))
+    # del(my_square)
+    print(Rectangle.number_of_instances)
