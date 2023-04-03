@@ -163,7 +163,7 @@ if __name__ == "__main__":
     print("Area: {} - Perimeter: {}".format(
         my_square.area(), my_square.perimeter()))
     print(my_square)
-    
+
     my_square_2 = my_square.square(6)
     print("Area: {} - Perimeter: {}".format(
         my_square.area(), my_square.perimeter()))
