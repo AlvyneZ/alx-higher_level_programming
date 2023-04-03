@@ -8,16 +8,18 @@ from sys import argv
 
 def main():
     """
-    My main function
+    My main function for getting possible coordinates
+
+    Returns:
+        None
     """
     if len(argv) != 2:
         print("Usage: nqueens N")
         exit(1)
-    try:
-        n = int(argv[1])
-    except ValueError:
+    if argv[1].isdigit() is False:
         print("N must be a number")
         exit(1)
+    n = int(argv[1])
     if n < 4:
         print("N must be at least 4")
         exit(1)
