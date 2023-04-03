@@ -128,7 +128,7 @@ class Rectangle:
         Returns:
             The rectangle instance of dimensions equal to size
         """
-        return Rectangle(size, size)
+        return cls(size, size)
 
     def __str__(self):
         """
