@@ -1,0 +1,70 @@
+===========================
+0-add_integer.py
+===========================
+
+This module defines a function "add_integer(a, b=98)" that takes 2 arguments:
+    a: required argument (int or float)
+    b: optional argument defaulting to 98 (int or float)
+For example:
+
+    >>> add_integer = __import__("0-add_integer").add_integer
+    >>> add_integer(1, 2)
+    3
+
+Tests
+======
+
+Argument Count
+---------------
+
+    >>> add_integer()
+    Traceback (most recent call last):
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+    >>> add_integer(1, 2, 3)
+    Traceback (most recent call last):
+    TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+    >>> add_integer(2)
+    100
+
+Floats and Negatives
+---------------------
+
+    >>> add_integer(2, -3)
+    -1
+
+    >>> add_integer(2.7)
+    100
+
+    >>> add_integer(-2.4, 4.4)
+    2
+
+    >>> add_integer(-3.3, -5)
+    -8
+
+Non numbers
+------------
+
+    >>> add_integer("tree")
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+    >>> add_integer(15, [1,2,3])
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+Special Floats
+---------------
+
+    >>> add_integer(float("inf"))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+    >>> add_integer(float("nan"))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
