@@ -134,3 +134,64 @@ l2 = [4, 5, 6]
 assign_value(l1, l2)
 print(l1)
 ```
+20. Tuple or not?  
+Is 'a' a tuple?  
+```
+a = ()
+```
+21. Tuple or not?  
+Is 'a' a tuple?  
+```
+a = (1, 2)
+```
+22. Tuple or not?  
+Is 'a' a tuple?  
+```
+a = (1)
+```
+23. Tuple or not?  
+Is 'a' a tuple?  
+```
+a = (1, )
+```
+24. Who I am?  
+What does this script print?  
+```
+a = (1)
+b = (1)
+a is b
+```
+25. Tuple or not  
+What does this script print?  
+```
+a = (1, 2)
+b = (1, 2)
+a is b
+```
+26. Empty is not empty  
+What does this script print?  
+```
+a = ()
+b = ()
+a is b
+```
+27. Still the same?  
+Will the last line of this script print 139926795932424?  
+```
+>>> id(a)
+139926795932424
+>>> a
+[1, 2, 3, 4]
+>>> a = a + [5]
+>>> id(a)
+```
+28. Same or not?  
+Will the last line of this script print 139926795932424?  
+```
+>>> a
+[1, 2, 3]
+>>> id (a)
+139926795932424
+>>> a += [4]
+>>> id(a)
+```
