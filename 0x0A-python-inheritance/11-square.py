@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module "10-square.py" provides one class:
+This module "11-square.py" provides one class:
     Square
 """
 Rectangle = __import__('9-rectangle').Rectangle
@@ -33,6 +33,12 @@ class Square(Rectangle):
             The area of the current square instance
         """
         return self.__size ** 2
+
+    def __str__(self):
+        """
+        Converts the square to a printable string
+        """
+        return "[Square] {}/{}".format(self.__size, self.__size)
 
 
 if __name__ == "__main__":

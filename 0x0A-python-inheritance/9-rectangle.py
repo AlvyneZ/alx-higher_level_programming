@@ -14,9 +14,10 @@ class Rectangle(BaseGeometry):
         self.__width: rectangle width
         self.__height: rectangle height
     """
-    def __init__(self, width: int, height: int) -> None:
+    def __init__(self, width, height):
         """
-        __init__ is the rectangle object constructor
+        Initializer for rectangle instance
+
         Args:
             width (int): rectangle's width
             height (int): rectangle's height
