@@ -24,6 +24,4 @@ class MyList(list):
         """
         Prints elements of a list of integers in ascending order
         """
-        sList = self.copy()
-        sList.sort()
-        print(sList)
+        print(sorted(self))
