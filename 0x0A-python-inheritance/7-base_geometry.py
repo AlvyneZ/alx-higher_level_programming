@@ -14,6 +14,12 @@ class BaseGeometry:
         integer_validator(name, value): Validates a value confirming
          it's an integer
     """
+    def __init__(self):
+        """
+        Empty Initializer for base class
+        """
+        super().__init__()
+
     def area(self):
         """
         Raises an Exception (derived classes should override it)

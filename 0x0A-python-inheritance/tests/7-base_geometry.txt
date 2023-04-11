@@ -19,7 +19,7 @@ Initialization Argument Count
 
     >>> BaseGeometry(12)
     Traceback (most recent call last):
-    TypeError: BaseGeometry() takes no arguments
+    TypeError: BaseGeometry.__init__() takes 1 positional argument but 2 were given
 
 area - Exception
 -----------------
