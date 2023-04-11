@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module provides one class:
+This "1-my_list.py" module provides one class:
     MyList(List)
 """
 
@@ -14,14 +14,16 @@ class MyList(list):
          in ascending order
     """
 
-    def __init__(self):
+    def __init__(self, lis=[]):
         """
         Initializer for initializing base class
         """
-        super().__init__()
+        super().__init__(lis)
 
     def print_sorted(self):
         """
         Prints elements of a list of integers in ascending order
         """
-        print(sorted(self))
+        sList = self.copy()
+        sList.sort()
+        print(sList)
