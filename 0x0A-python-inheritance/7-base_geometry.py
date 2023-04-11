@@ -20,6 +20,12 @@ class BaseGeometry:
         """
         super().__init__()
 
+    def __new__(cls, *args, **kwargs):
+        """
+        For setting new value for integer
+        """
+        return super().__new__(cls)
+
     def area(self):
         """
         Raises an Exception (derived classes should override it)
