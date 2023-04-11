@@ -21,7 +21,7 @@ class MyInt(int):
         """
         For setting new value for integer
         """
-        return  super(cls, cls).__new__(cls, value)
+        return super(cls, cls).__new__(cls, value)
 
     def __eq__(self, my_int):
         """
