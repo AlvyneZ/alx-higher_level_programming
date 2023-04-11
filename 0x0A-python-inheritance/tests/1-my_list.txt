@@ -19,10 +19,23 @@ Initialization Argument Count
     Traceback (most recent call last):
     TypeError: MyList.__init__() takes 1 positional argument but 2 were given
 
-print_sorted method
---------------------
+print_sorted - Empty list
+--------------------------
 
     >>> my_list = MyList()
+
+    >>> print(my_list)
+    []
+
+    >>> my_list.print_sorted()
+    []
+
+    >>> print(my_list)
+    []
+
+print_sorted - Integer list
+----------------------------
+
     >>> my_list.append(1)
     >>> my_list.append(4)
     >>> my_list.append(2)
@@ -37,3 +50,22 @@ print_sorted method
 
     >>> print(my_list)
     [1, 4, 2, 3, 5]
+
+print_sorted - Negatives
+-------------------------
+
+    >>> my_list = MyList()
+    >>> my_list.append(-1)
+    >>> my_list.append(-4)
+    >>> my_list.append(-2)
+    >>> my_list.append(-3)
+    >>> my_list.append(-5)
+
+    >>> print(my_list)
+    [-1, -4, -2, -3, -5]
+
+    >>> my_list.print_sorted()
+    [-5, -4, -3, -2, -1]
+
+    >>> print(my_list)
+    [-1, -4, -2, -3, -5]
