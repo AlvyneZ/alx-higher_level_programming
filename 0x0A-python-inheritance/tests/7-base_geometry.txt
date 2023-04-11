@@ -52,6 +52,8 @@ integer_validator - Non-integers
 ------------------------------
 
     >>> bg.integer_validator("bool", True)
+    Traceback (most recent call last):
+    TypeError: bool must be an integer
 
     >>> bg.integer_validator("float", 1.8)
     Traceback (most recent call last):
