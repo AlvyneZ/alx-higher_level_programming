@@ -1,0 +1,60 @@
+===========================
+7-base_geometry.py
+===========================
+
+This module defines a class "BaseGeometry" that has 2 methods:
+    area(): raises a not implemented error
+    integer_validator(name, value): Validates a value confirming it's an integer
+
+Importing:
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Tests
+======
+
+Initialization Argument Count
+------------------------------
+
+    >>> bg = BaseGeometry()
+
+    >>> BaseGeometry(12)
+    Traceback (most recent call last):
+    TypeError: BaseGeometry() takes no arguments
+
+area - Exception
+-----------------
+
+    >>> bg.area()
+    Traceback (most recent call last):
+    Exception: area() is not implemented
+
+integer_validator - Argument Count
+-----------------------------------
+
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+    TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+    >>> bg.integer_validator("integer", 1)
+
+    >>> bg.integer_validator("zero", 0)
+    Traceback (most recent call last):
+    ValueError: zero must be greater than 0
+
+integer_validator - Negatives
+------------------------------
+
+    >>> bg.integer_validator("negative", -1)
+    Traceback (most recent call last):
+    ValueError: negative must be greater than 0
+
+integer_validator - Non-integers
+------------------------------
+
+    >>> bg.integer_validator("float", 1.8)
+    Traceback (most recent call last):
+    TypeError: float must be an integer
+
+    >>> bg.integer_validator("string", "...str...")
+    Traceback (most recent call last):
+    TypeError: string must be an integer
