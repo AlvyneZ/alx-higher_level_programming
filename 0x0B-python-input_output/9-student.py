@@ -13,6 +13,7 @@ class Student:
         self.first_name
         self.last_name
         self.age
+        to_json()
     """
     def __init__(self, first_name, last_name, age):
         """
