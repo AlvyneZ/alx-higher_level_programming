@@ -31,7 +31,7 @@ class Student:
             attrs: List of attributes to retrieve
         """
         json = self.__dict__.copy()
-        if attrs is None:
+        if type(attrs) != list:
             return json
         unwanted = set(list(json.keys())).difference(set(attrs))
         for att in unwanted:
@@ -50,6 +50,7 @@ class Student:
             setattr(self, key, value)
 
 
+"""
 if __name__ == "__main__":
     import os
     import sys
@@ -95,3 +96,4 @@ if __name__ == "__main__":
     print("{} {} {}".format(
         new_student_1.first_name, new_student_1.last_name, new_student_1.age
     ))
+"""

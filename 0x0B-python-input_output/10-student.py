@@ -31,7 +31,7 @@ class Student:
             attrs: List of attributes to retrieve
         """
         json = self.__dict__.copy()
-        if attrs is None:
+        if type(attrs) != list:
             return json
         unwanted = set(list(json.keys())).difference(set(attrs))
         for att in unwanted:
