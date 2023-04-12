@@ -8,7 +8,7 @@ This "1-write_file.py" module provides one function:
 def write_file(filename="", text=""):
     """
     Function that writes text to a UTF-8 encoded text file and returns the
-     number of lines written
+     number of characters written
 
     Args:
         filename: name of the file to be written to
