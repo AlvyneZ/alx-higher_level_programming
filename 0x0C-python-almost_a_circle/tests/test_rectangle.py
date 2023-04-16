@@ -25,6 +25,7 @@ class TestRectangle(unittest.TestCase):
         test_setters: tests the validation of instance attribute setters
         test_area: tests the area function of Rectangle
         test_display: tests the display function of Rectangle
+        test_str: tests the __str__ function of Rectangle
     """
 
     def tearDown(self):
@@ -178,3 +179,13 @@ class TestRectangle(unittest.TestCase):
             r1.display()
             self.assertEqual(
                 Screen.getvalue(), "\n\n\n ##\n ##\n ##\n ##\n")
+
+    def test_str(self):
+        """
+        Test for __str__ function of Rectangle
+        """
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        self.assertEqual(r1.__str__(), "[Rectangle] (12) 2/1 - 4/6")
+
+        r2 = Rectangle(5, 5, 1)
+        self.assertEqual(r2.__str__(), "[Rectangle] (1) 1/0 - 5/5")
