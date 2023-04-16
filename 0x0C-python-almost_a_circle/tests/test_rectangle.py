@@ -208,3 +208,17 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.height, 8)
         self.assertEqual(r1.x, 9)
         self.assertEqual(r1.y, 0)
+
+        r1.update(1, width=2, height=3, x=4, y=5)
+        self.assertEqual(r1.id, 1)
+        self.assertEqual(r1.width, 7)
+        self.assertEqual(r1.height, 8)
+        self.assertEqual(r1.x, 9)
+        self.assertEqual(r1.y, 0)
+
+        r1.update(x=4, height=3, y=5, width=2, id=6)
+        self.assertEqual(r1.id, 6)
+        self.assertEqual(r1.width, 2)
+        self.assertEqual(r1.height, 3)
+        self.assertEqual(r1.x, 4)
+        self.assertEqual(r1.y, 5)

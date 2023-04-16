@@ -175,13 +175,26 @@ class Rectangle(Base):
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
             self.id, self.__x, self.__y, self.__width, self.__height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """
         Updater for setting rectangle dimensions and location
 
         Args:
             args (tuple): positional arguments
+            kwargs (dict): keyword arguments
         """
+        if len(args) == 0 and kwargs is not None:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.id = value
+                if key == "width":
+                    self.width = value
+                if key == "height":
+                    self.height = value
+                if key == "x":
+                    self.x = value
+                if key == "y":
+                    self.y = value
         for i in range(len(args)):
             if i == 0:
                 self.id = args[i]
