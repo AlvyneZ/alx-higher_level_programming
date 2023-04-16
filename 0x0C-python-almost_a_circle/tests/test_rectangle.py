@@ -20,6 +20,7 @@ class TestRectangle(unittest.TestCase):
         tearDown: resets parameters at the end of tests
         test_init: tests rectangle attributes setting
         test_setters: tests the validation of instance attribute setters
+        test_area: tests the area function of Rectangle
     """
 
     def tearDown(self):
@@ -144,3 +145,16 @@ class TestRectangle(unittest.TestCase):
                 TypeError,
                 msg="Rectangle attribute y must be an integer"):
             r1.y = "str"
+
+    def test_area(self):
+        """
+        Test for area function of Rectangle
+        """
+        r1 = Rectangle(3, 2)
+        self.assertEqual(r1.area(), 6)
+
+        r2 = Rectangle(2, 10)
+        self.assertEqual(r2.area(), 20)
+
+        r3 = Rectangle(8, 7, 0, 0, 12)
+        self.assertEqual(r3.area(), 56)

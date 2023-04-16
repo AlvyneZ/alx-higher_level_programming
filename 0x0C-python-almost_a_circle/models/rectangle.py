@@ -145,3 +145,12 @@ class Rectangle(Base):
         """
         self.__pos_int_validator("y", y)
         self.__y = y
+
+    def area(self):
+        """
+        Calculates the area of a rectangle instance
+
+        Returns:
+            The area of the current rectangle instance
+        """
+        return self.__height * self.__width
