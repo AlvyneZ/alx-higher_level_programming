@@ -6,7 +6,10 @@ This "test_rectangle.py" module defines one class:
 Run as a module from project directory using:
 $   python3 -m unittest ./tests/test_rectangle.py
 """
+from io import StringIO
+
 import unittest
+from unittest.mock import patch
 
 from models.rectangle import Rectangle
 from models.base import Base
@@ -21,6 +24,7 @@ class TestRectangle(unittest.TestCase):
         test_init: tests rectangle attributes setting
         test_setters: tests the validation of instance attribute setters
         test_area: tests the area function of Rectangle
+        test_display: tests the display function of Rectangle
     """
 
     def tearDown(self):
@@ -158,3 +162,19 @@ class TestRectangle(unittest.TestCase):
 
         r3 = Rectangle(8, 7, 0, 0, 12)
         self.assertEqual(r3.area(), 56)
+
+    def test_display(self):
+        """
+        Test for display function of Rectangle
+        """
+        with patch("sys.stdout", StringIO()) as Screen:
+            r1 = Rectangle(2, 4)
+            r1.display()
+            self.assertEqual(
+                Screen.getvalue(), "##\n##\n##\n##\n")
+
+        with patch("sys.stdout", StringIO()) as Screen:
+            r1 = Rectangle(2, 4, 1, 3, 12)
+            r1.display()
+            self.assertEqual(
+                Screen.getvalue(), "\n\n\n ##\n ##\n ##\n ##\n")
