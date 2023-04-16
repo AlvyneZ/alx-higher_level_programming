@@ -19,6 +19,7 @@ class TestRectangle(unittest.TestCase):
     Methods:
         tearDown: resets parameters at the end of tests
         test_init: tests rectangle attributes setting
+        test_setters: tests the validation of instance attribute setters
     """
 
     def tearDown(self):
@@ -69,3 +70,77 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(
             r3.y, 6,
             "Base initializer should set y attribute as passed (6)")
+
+    def test_setters(self):
+        """
+        Test for checking the validation of instance attributes
+        """
+        r1 = Rectangle(10, 2, 5, 6, 12)
+
+        with self.assertRaises(
+                ValueError,
+                msg="Rectangle width should be greater than 0"):
+            r1.width = 0
+        with self.assertRaises(
+                ValueError,
+                msg="Rectangle width cannot be negative"):
+            r1.width = -12
+        with self.assertRaises(
+                TypeError,
+                msg="Rectangle width must be an integer"):
+            r1.width = 9.3
+        with self.assertRaises(
+                TypeError,
+                msg="Rectangle width must be an integer"):
+            r1.width = "str"
+
+        with self.assertRaises(
+                ValueError,
+                msg="Rectangle height should be greater than 0"):
+            r1.height = 0
+        with self.assertRaises(
+                ValueError,
+                msg="Rectangle height cannot be negative"):
+            r1.height = -12
+        with self.assertRaises(
+                TypeError,
+                msg="Rectangle height must be an integer"):
+            r1.height = 9.3
+        with self.assertRaises(
+                TypeError,
+                msg="Rectangle height must be an integer"):
+            r1.height = "str"
+
+        r1.x = 0
+        self.assertEqual(
+            r1.x, 0,
+            "Rectangle x attribute setter should allow 0")
+        with self.assertRaises(
+                ValueError,
+                msg="Rectangle attribute x cannot be negative"):
+            r1.x = -12
+        with self.assertRaises(
+                TypeError,
+                msg="Rectangle attribute x must be an integer"):
+            r1.x = 9.3
+        with self.assertRaises(
+                TypeError,
+                msg="Rectangle attribute x must be an integer"):
+            r1.x = "str"
+
+        r1.y = 0
+        self.assertEqual(
+            r1.y, 0,
+            "Rectangle y attribute setter should allow 0")
+        with self.assertRaises(
+                ValueError,
+                msg="Rectangle attribute y cannot be negative"):
+            r1.y = -12
+        with self.assertRaises(
+                TypeError,
+                msg="Rectangle attribute y must be an integer"):
+            r1.y = 9.3
+        with self.assertRaises(
+                TypeError,
+                msg="Rectangle attribute y must be an integer"):
+            r1.y = "str"

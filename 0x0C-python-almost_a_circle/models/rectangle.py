@@ -36,7 +36,7 @@ class Rectangle(Base):
         self.y = y
         super().__init__(id)
 
-    def pos_int_validator(self, name, value):
+    def __pos_int_validator(self, name, value):
         """
         Ensures a value for an argument "name" is a positive integer
 
@@ -49,7 +49,7 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("{} must be >= 0".format(name))
 
-    def pos_nz_int_validator(self, name, value):
+    def __pos_nz_int_validator(self, name, value):
         """
         Ensures a value for an argument "name" is a positive non-zero integer
 
@@ -80,7 +80,7 @@ class Rectangle(Base):
         Args:
             width (integer): width of the rectangle instance
         """
-        self.pos_nz_int_validator("width", width)
+        self.__pos_nz_int_validator("width", width)
         self.__width = width
 
     @property
@@ -101,7 +101,7 @@ class Rectangle(Base):
         Args:
             height (integer): height of the rectangle instance
         """
-        self.pos_nz_int_validator("height", height)
+        self.__pos_nz_int_validator("height", height)
         self.__height = height
 
     @property
@@ -122,7 +122,7 @@ class Rectangle(Base):
         Args:
             x (integer): Grid horizontal location of the rectangle instance
         """
-        self.pos_int_validator("x", x)
+        self.__pos_int_validator("x", x)
         self.__x = x
 
     @property
@@ -143,5 +143,5 @@ class Rectangle(Base):
         Args:
             x (integer): Grid vertical location of the rectangle instance
         """
-        self.pos_int_validator("y", y)
+        self.__pos_int_validator("y", y)
         self.__y = y
