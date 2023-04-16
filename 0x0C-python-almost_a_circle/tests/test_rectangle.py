@@ -26,6 +26,7 @@ class TestRectangle(unittest.TestCase):
         test_area: tests the area function of Rectangle
         test_display: tests the display function of Rectangle
         test_str: tests the __str__ function of Rectangle
+        test_update: tests for update function of Rectangle
     """
 
     def tearDown(self):
@@ -189,3 +190,21 @@ class TestRectangle(unittest.TestCase):
 
         r2 = Rectangle(5, 5, 1)
         self.assertEqual(r2.__str__(), "[Rectangle] (1) 1/0 - 5/5")
+
+    def test_update(self):
+        """
+        Test for update function of Rectangle
+        """
+        r1 = Rectangle(2, 3, 4, 5)
+        self.assertEqual(r1.id, 1)
+        self.assertEqual(r1.width, 2)
+        self.assertEqual(r1.height, 3)
+        self.assertEqual(r1.x, 4)
+        self.assertEqual(r1.y, 5)
+
+        r1.update(6, 7, 8, 9, 0)
+        self.assertEqual(r1.id, 6)
+        self.assertEqual(r1.width, 7)
+        self.assertEqual(r1.height, 8)
+        self.assertEqual(r1.x, 9)
+        self.assertEqual(r1.y, 0)
