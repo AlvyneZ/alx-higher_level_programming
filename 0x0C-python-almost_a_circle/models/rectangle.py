@@ -206,3 +206,15 @@ class Rectangle(Base):
                 self.x = args[i]
             if i == 4:
                 self.y = args[i]
+
+    def to_dictionary(self):
+        """
+        Converts instance to dictionary of attributes
+        """
+        dict_rep = {}
+        dict_rep["id"] = self.id
+        dict_rep["width"] = self.__width
+        dict_rep["height"] = self.__height
+        dict_rep["x"] = self.__x
+        dict_rep["y"] = self.__y
+        return dict_rep

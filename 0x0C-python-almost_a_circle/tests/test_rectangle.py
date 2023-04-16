@@ -222,3 +222,15 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.height, 3)
         self.assertEqual(r1.x, 4)
         self.assertEqual(r1.y, 5)
+
+    def test_to_dictionary(self):
+        """
+        Test for to_dictionary function of Rectangle
+        """
+        r1 = Rectangle(2, 3, 4, 5)
+        d1 = {"id": 1, "width": 2, "height": 3, "x": 4, "y": 5}
+        self.assertDictEqual(r1.to_dictionary(), d1)
+
+        r2 = Rectangle(1, 3)
+        d2 = {"id": 2, "width": 1, "height": 3, "x": 0, "y": 0}
+        self.assertDictEqual(r2.to_dictionary(), d2)
