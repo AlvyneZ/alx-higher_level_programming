@@ -19,6 +19,12 @@ class Rectangle(Base):
         width: getter and setter for self.__width
         x: getter and setter for self.__x
         y: getter and setter for self.__y
+
+    Methods:
+        area: Calculates the area of an instance
+        display: Prints a grid with the Rectangle instance at its location
+        update: Updates attributes of a rectangle instance
+        to_dictionary: converts an instance to dictionary
     """
     def __init__(self, width, height, x=0, y=0, id=None):
         """

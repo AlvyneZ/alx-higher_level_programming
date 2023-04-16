@@ -27,6 +27,7 @@ class TestRectangle(unittest.TestCase):
         test_display: tests the display function of Rectangle
         test_str: tests the __str__ function of Rectangle
         test_update: tests for update function of Rectangle
+        test_to_dictionary: tests for to_dictionary function of Rectangle
     """
 
     def tearDown(self):
