@@ -6,6 +6,8 @@ This "test_base.py" module defines one class:
 Run from project directory using:
 $   python3 -m unittest ./tests/test_base.py
 """
+import os
+
 import unittest
 
 from models.base import Base
@@ -23,6 +25,8 @@ class TestBase(unittest.TestCase):
         test_to_json_string: tests to_json_string method
         test_from_json_string: tests from_json_string method
         test_create: tests the create method
+        test_save_to_file: tests the save_to_file method of Base class
+        test_load_from_file: tests the load_from_file method of Base class
     """
 
     def tearDown(self):
@@ -134,3 +138,111 @@ class TestBase(unittest.TestCase):
         self.assertEqual(s1.__str__(), s2.__str__())
         self.assertEqual(s1 == s2, False)
         self.assertEqual(s1 is s2, False)
+
+    def __backup_og_files(self):
+        """
+        For backing up original files
+        """
+        sq_file_existed = False
+        rct_file_existed = False
+        if os.path.exists("Square.json"):
+            os.rename("Square.json", "Square.json_bkp_test")
+            sq_file_existed = True
+        if os.path.exists("Rectangle.json"):
+            os.rename("Rectangle.json", "Rectangle.json_bkp_test")
+            rct_file_existed = True
+        return (sq_file_existed, rct_file_existed)
+
+    def __restore_og_files(self, sq_file_existed, rct_file_existed):
+        """
+        For restoring original files
+        """
+        if sq_file_existed:
+            os.rename("Square.json_bkp_test", "Square.json")
+        if rct_file_existed:
+            os.rename("Rectangle.json_bkp_test", "Rectangle.json")
+
+    def __save_file(self):
+        """
+        For saving objects to a file for testing save and load
+        """
+        r1 = Rectangle(2, 3, 4, 5, 1)
+        r2 = Rectangle(7, 8, 9, 0, 6)
+        lr = [r1, r2]
+        Rectangle.save_to_file(lr)
+        s1 = Square(3, 4, 5, 2)
+        s2 = Square(8, 9, 0, 7)
+        ls = [s1, s2]
+        Square.save_to_file(ls)
+        return (lr, ls)
+
+    def __delete_file(self):
+        """
+        For deleting files used for testing
+        """
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
+
+    def test_save_to_file(self):
+        """
+        Test for save_to_file method of Base class
+        """
+        files_existed = self.__backup_og_files()
+        try:
+            Rectangle.save_to_file(None)
+            with open("Rectangle.json", "r", encoding="utf-8") as file:
+                self.assertEqual("[]", file.read())
+            self.__delete_file()
+
+            Rectangle.save_to_file([])
+            with open("Rectangle.json", "r", encoding="utf-8") as file:
+                self.assertEqual("[]", file.read())
+            self.__delete_file()
+
+            Rectangle.save_to_file([Rectangle(5, 4, 3, 2, 1)])
+            with open("Rectangle.json", "r", encoding="utf-8") as file:
+                self.assertEqual(
+                    """[{"id": 1, "width": 5, "height": 4, "x": 3, "y": 2}]""",
+                    file.read()
+                )
+
+            self.__save_file()
+            with open("Rectangle.json", "r", encoding="utf-8") as file:
+                self.assertEqual(
+                    """[{"id": 1, "width": 2, "height": 3, "x": 4, "y": 5},"""
+                    """ {"id": 6, "width": 7, "height": 8, "x": 9, "y": 0}]""",
+                    file.read()
+                )
+            with open("Square.json", "r", encoding="utf-8") as file:
+                self.assertEqual(
+                    """[{"id": 2, "size": 3, "x": 4, "y": 5},"""
+                    """ {"id": 7, "size": 8, "x": 9, "y": 0}]""",
+                    file.read()
+                )
+        finally:
+            self.__delete_file()
+            self.__restore_og_files(*files_existed)
+
+    def test_load_from_file(self):
+        """
+        Test for load_from_file method of Base class
+        """
+        files_existed = self.__backup_og_files()
+        try:
+            self.assertListEqual(
+                Rectangle.load_from_file(),
+                []
+            )
+
+            lr_og, ls_og = self.__save_file()
+            lr = Rectangle.load_from_file()
+            ls = Square.load_from_file()
+            for i in range(len(lr_og)):
+                self.assertEqual(lr[i].__str__(), lr_og[i].__str__())
+            for i in range(len(ls_og)):
+                self.assertEqual(ls[i].__str__(), ls_og[i].__str__())
+        finally:
+            self.__delete_file()
+            self.__restore_og_files(*files_existed)

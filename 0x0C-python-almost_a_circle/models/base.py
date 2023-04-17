@@ -16,6 +16,10 @@ class Base:
 
     Methods:
         to_json_string: Coverts a list of dictionaries to a json string
+        from_json_string: Coverts a json string to a list of dictionaries
+        create: Converts a dictionary to the corresponding class instance
+        save_to_file: Writes a JSON string of list of objects to a file
+        load_from_file: Loads and creates class instances from JSON file
     """
 
     __nb_objects = 0
@@ -79,3 +83,40 @@ class Base:
             obj = Base(id=100)
         obj.update(**dictionary)
         return obj
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """
+        Writes a JSON string representation of list of objects to a file
+
+        Args:
+            list_objs: List of objects inheriting from Base
+        """
+        file_name = "{}.json".format(cls.__name__)
+        if list_objs is None:
+            list_dicts = []
+        else:
+            list_dicts = [obj.to_dictionary() for obj in list_objs]
+        json_str = cls.to_json_string(list_dicts)
+        with open(file_name, "w", encoding="utf-8") as file:
+            file.write(json_str)
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Loads JSON representation of class instances from file and creates
+         a list of objects
+
+        Returns:
+            List of loaded objects inheriting from Base
+        """
+        file_name = "{}.json".format(cls.__name__)
+
+        try:
+            with open(file_name, "r", encoding="utf-8") as file:
+                content = file.read()
+                list_dicts = cls.from_json_string(content)
+        except FileNotFoundError:
+            return []
+
+        return [cls.create(**obj_dict) for obj_dict in list_dicts]
