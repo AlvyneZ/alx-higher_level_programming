@@ -9,6 +9,8 @@ $   python3 -m unittest ./tests/test_base.py
 import unittest
 
 from models.base import Base
+from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestBase(unittest.TestCase):
@@ -18,6 +20,9 @@ class TestBase(unittest.TestCase):
     Methods:
         tearDown: resets parameters at the end of tests
         test_init: tests identifier incrementing and setting
+        test_to_json_string: tests to_json_string method
+        test_from_json_string: tests from_json_string method
+        test_create: tests the create method
     """
 
     def tearDown(self):
@@ -65,3 +70,67 @@ class TestBase(unittest.TestCase):
             Base._Base__nb_objects, 4,
             "Recorded number of objects should equal objects "
             "initialized with id not set")
+
+    def test_to_json_string(self):
+        """
+        Test for to_json_string method of Base class
+        """
+        self.assertEqual(
+            Base.to_json_string(None),
+            "[]",
+            "converter should return a JSON of an empty list for None arg"
+        )
+        self.assertEqual(
+            Base.to_json_string([]),
+            "[]",
+            "converter should return a JSON of an empty list for [] arg"
+        )
+        self.assertEqual(
+            Base.to_json_string([{"a": 1, "b": 2}]),
+            """[{"a": 1, "b": 2}]"""
+        )
+        self.assertEqual(
+            Base.to_json_string([{"a": 1, "b": 2}, {"c": 3}]),
+            """[{"a": 1, "b": 2}, {"c": 3}]"""
+        )
+
+    def test_from_json_string(self):
+        """
+        Test for from_json_string method of Base class
+        """
+        self.assertListEqual(
+            Base.from_json_string(None),
+            [],
+            "converter should return an empty list for None arg"
+        )
+        self.assertListEqual(
+            Base.from_json_string("[]"),
+            [],
+            "converter should return an empty list for [] arg"
+        )
+        self.assertListEqual(
+            Base.from_json_string("""[{"a": 1, "b": 2}]"""),
+            [{"a": 1, "b": 2}]
+        )
+        self.assertListEqual(
+            Base.from_json_string("""[{"a": 1, "b": 2}, {"c": 3}]"""),
+            [{"a": 1, "b": 2}, {"c": 3}]
+        )
+
+    def test_create(self):
+        """
+        Test for create method of Base class
+        """
+        r1 = Rectangle(1, 2, 3, 4)
+        dr1 = r1.to_dictionary()
+        r2 = Rectangle.create(**dr1)
+        self.assertEqual(r1.__str__(), r2.__str__())
+        self.assertEqual(r1 == r2, False)
+        self.assertEqual(r1 is r2, False)
+
+        s1 = Square(1, 2, 3)
+        ds1 = s1.to_dictionary()
+        s2 = Square.create(**ds1)
+        self.assertEqual(s1.__str__(), s2.__str__())
+        self.assertEqual(s1 == s2, False)
+        self.assertEqual(s1 is s2, False)
