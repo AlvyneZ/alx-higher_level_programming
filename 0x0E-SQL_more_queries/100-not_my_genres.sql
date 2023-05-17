@@ -1,4 +1,4 @@
--- A script that lists all genres of the show Dexter from hbtn_0d_tvshows
+-- A script that lists all genres not of the show Dexter from hbtn_0d_tvshows
 SELECT `tv_genres`.`name` AS `name` FROM tv_genres
     WHERE `name` NOT IN (
         SELECT `tv_genres`.`name` AS `name`

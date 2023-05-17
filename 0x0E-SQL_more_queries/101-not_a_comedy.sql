@@ -1,4 +1,4 @@
--- A script that lists all Comedy shows in the database hbtn_0d_tvshows
+-- A script that lists all non Comedy shows in the database hbtn_0d_tvshows
 SELECT `tv_shows`.`title` AS `title` FROM tv_shows
     WHERE `title` NOT IN (
         SELECT `tv_shows`.`title` AS `title`
