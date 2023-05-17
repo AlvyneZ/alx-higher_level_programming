@@ -8,5 +8,5 @@ CREATE TABLE IF NOT EXISTS hbtn_0d_usa.cities(
     CONSTRAINT UNQ_id UNIQUE(`id`),
     CONSTRAINT PK_id PRIMARY KEY(`id`),
     CONSTRAINT FK_state_id FOREIGN KEY(`state_id`)
-        REFERENCES hbtn_0d_usa.state(`id`)
+        REFERENCES hbtn_0d_usa.states(`id`)
 );
