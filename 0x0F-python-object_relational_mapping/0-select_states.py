@@ -12,7 +12,7 @@ def select_states(mysql_username, mysql_password, database_name):
     Returns a tuple of tuples containing the data of each state
     """
     conn = MySQLdb.connect(
-        host="127.0.0.1", port=3306,
+        host="localhost", port=3306,
         user=mysql_username,
         passwd=mysql_password,
         db=database_name, charset="utf8"
