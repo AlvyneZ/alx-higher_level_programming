@@ -20,7 +20,7 @@ def filter_states(mysql_username, mysql_password, database_name):
     cur = conn.cursor()
     cur.execute(
         "SELECT * FROM states " +
-        "WHERE name LIKE 'N%' " +
+        "WHERE name LIKE BINARY 'N%' " +
         "ORDER BY id ASC"
     )
     query_rows = cur.fetchall()
