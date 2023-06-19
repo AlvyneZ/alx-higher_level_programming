@@ -21,6 +21,6 @@ class State(Base):
     name = mapped_column(String(128), nullable=False)
     cities = relationship(
         "City",
-        back_populates="state",
+        backref="state",
         cascade="all, delete"
     )

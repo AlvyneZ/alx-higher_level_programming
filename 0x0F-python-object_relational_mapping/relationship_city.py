@@ -2,8 +2,8 @@
 """
 This module provides a class City which is an ORM model
 """
-from sqlalchemy import Integer, String, ForeignKey
-from sqlalchemy.orm import mapped_column, relationship
+
+from sqlalchemy import Column, Integer, String, ForeignKey
 from relationship_state import Base, State
 
 
@@ -16,7 +16,6 @@ class City(Base):
         state_id(int): state the city belongs to
     """
     __tablename__ = "cities"
-    id = mapped_column(Integer, primary_key=True, autoincrement=True)
-    name = mapped_column(String(128), nullable=False)
-    state_id = mapped_column(Integer, ForeignKey('states.id'), nullable=False)
-    state = relationship("State", back_populates="cities")
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(128), nullable=False)
+    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
