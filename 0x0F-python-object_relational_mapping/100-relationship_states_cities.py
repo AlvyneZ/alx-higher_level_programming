@@ -25,10 +25,9 @@ def insert_city_state(
     Session = sessionmaker(bind=engine)
     session = Session()
     state = State(name=state_name)
-    session.add(state)
-    session.commit()
     city = City(name=city_name)
     state.cities.append(city)
+    session.add(state)
     session.commit()
     session.close()
     return city
