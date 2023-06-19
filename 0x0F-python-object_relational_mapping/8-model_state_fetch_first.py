@@ -32,6 +32,6 @@ if __name__ == "__main__":
 
         instance = session.query(State).first()
         if instance is None:
-            print()
+            print('Nothing')
         else:
             print('{}: {}'.format(instance.id, instance.name))
