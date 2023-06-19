@@ -17,7 +17,7 @@ def insert_city_state(
     Returns the newly created city Object
     """
     engine = create_engine(
-        'mysql+mysqldb://{}:{}@127.0.0.1/{}'.format(
+        'mysql+mysqldb://{}:{}@localhost/{}'.format(
             mysql_username, mysql_password, database_name
         ),
         pool_pre_ping=True
@@ -36,7 +36,7 @@ def create_tables(mysql_username, mysql_password, database_name):
     Creates the tables in the database
     """
     engine = create_engine(
-        'mysql+mysqldb://{}:{}@127.0.0.1/{}'.format(
+        'mysql+mysqldb://{}:{}@localhost/{}'.format(
             mysql_username, mysql_password, database_name
         ),
         pool_pre_ping=True
