@@ -1,18 +1,40 @@
 #!/usr/bin/python3
 """
-This script searches a MySQL DB for a state
+This module provides a function find_state to search for
+ a State object from the states table from a MySQL DB
 """
 
-
-from sys import argv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
+
+def find_state(mysql_username, mysql_password, database_name, state_name):
+    """
+    Returns the first matching state Object
+    """
+    engine = create_engine(
+        'mysql+mysqldb://{}:{}@localhost/{}'.format(
+            mysql_username, mysql_password, database_name
+        ),
+        pool_pre_ping=True
+    )
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    state = session.query(State)\
+        .filter(State.name == state_name)\
+        .first()
+    session.close()
+    return state
+
+
 if __name__ == "__main__":
     """
-    Searching for the state from database
+    When running as a script, use command line arguments as
+     function inputs and print output to screen
     """
+    from sys import argv
+
     n = len(argv)
     if n != 5:
         print(
@@ -20,19 +42,8 @@ if __name__ == "__main__":
             "mysql_password database_name state_name"
         )
     else:
-        engine = create_engine(
-            'mysql+mysqldb://{}:{}@localhost/{}'.format(
-                argv[1], argv[2], argv[3]
-            ),
-            pool_pre_ping=True
-        )
-        Session = sessionmaker(bind=engine)
-        session = Session()
-
-        instance = session.query(State)\
-            .filter(State.name == argv[4])\
-            .first()
-        if instance is None:
+        state = find_state(argv[1], argv[2], argv[3], argv[4])
+        if state is None:
             print('Not found')
         else:
-            print(instance.id)
+            print(state.id)
