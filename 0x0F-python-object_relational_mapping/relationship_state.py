@@ -4,9 +4,7 @@ This module provides a class State which is an ORM model
 """
 from sqlalchemy import Integer, String
 from sqlalchemy.orm import mapped_column, relationship
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
+from relationship_city import Base
 
 
 class State(Base):

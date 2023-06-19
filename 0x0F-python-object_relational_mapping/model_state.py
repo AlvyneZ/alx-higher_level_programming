@@ -3,9 +3,7 @@
 This module provides a class State which is an ORM model
 """
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
+from model_city import Base
 
 
 class State(Base):

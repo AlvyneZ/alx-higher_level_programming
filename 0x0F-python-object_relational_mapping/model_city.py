@@ -2,8 +2,11 @@
 """
 This module provides a class City which is an ORM model
 """
+
 from sqlalchemy import Column, Integer, String, ForeignKey
-from model_state import Base, State
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 
 class City(Base):
