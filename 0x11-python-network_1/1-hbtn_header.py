@@ -7,7 +7,7 @@ import urllib.request
 
 def get_header(url: str, header_var: str):
     """
-    Fetches data from the provided url and prints the body
+    Fetches data from the provided url and prints a header value
     """
     with urllib.request.urlopen(url) as response:
         return response.headers.get(header_var)
