@@ -10,7 +10,7 @@ def post_data(url: str, dict_data: dict):
     Posts data to the provided url and prints the body
     """
     response = requests.post(url, data=dict_data)
-    if response.status_code == 204:
+    if (response.status_code == 204) or (len(response.text) == 0):
         return None
     try:
         return response.json()
