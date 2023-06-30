@@ -10,7 +10,9 @@ def get_header(url: str, header_var: str):
     Fetches data from the provided url and prints a header value
     """
     response = requests.get(url)
-    return response.headers[header_var]
+    if header_var in response.headers.keys():
+        return response.headers[header_var]
+    return ""
 
 
 if __name__ == "__main__":
