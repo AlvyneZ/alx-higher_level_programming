@@ -22,9 +22,9 @@ if __name__ == "__main__":
     from sys import argv
 
     data = {"q": ""}
-    if len(argv) > 2:
-        data.update({"q": argv[2]})
-    res = post_data(argv[1], data)
+    if len(argv) > 1:
+        data.update({"q": argv[1]})
+    res = post_data("http://0.0.0.0:5000/search_user", data)
     if res is None:
         print("No result")
     elif res == 0:
