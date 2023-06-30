@@ -13,7 +13,7 @@ def fetch_url(url: str):
     body = response.text
     print("Body response:")
     print("\t- type: {}".format(body.__class__))
-    print("\t- content: {}".format(body.decode("utf-8")))
+    print("\t- content: {}".format(body))
 
 
 if __name__ == "__main__":
