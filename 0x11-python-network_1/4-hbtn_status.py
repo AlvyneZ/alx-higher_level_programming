@@ -10,7 +10,7 @@ def fetch_url(url: str):
     Fetches data from the provided url and prints the body
     """
     response = requests.get(url)
-    body = response.content
+    body = response.text
     print("Body response:")
     print("\t- type: {}".format(body.__class__))
     print("\t- content: {}".format(body.decode("utf-8")))
