@@ -12,7 +12,7 @@ def get_header(url: str, header_var: str):
     response = requests.get(url)
     if header_var in response.headers.keys():
         return response.headers[header_var]
-    return ""
+    return None
 
 
 if __name__ == "__main__":
