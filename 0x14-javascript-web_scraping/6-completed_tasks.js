@@ -4,12 +4,12 @@
 const request = require('request');
 
 request(process.argv[2], (err, response) => {
-  if (!err){
-    todo_list = JSON.parse(response.body)
-    let count = {};
-    for (item of todo_list) {
-      if (item.completed){
-        if (!count[item.userId]) count[item.userId] = 0;
+  if (!err) {
+    const todoList = JSON.parse(response.body);
+    const count = {};
+    for (const item of todoList) {
+      if (!count[item.userId]) count[item.userId] = 0;
+      if (item.completed) {
         count[item.userId] = count[item.userId] + 1;
       }
     }
