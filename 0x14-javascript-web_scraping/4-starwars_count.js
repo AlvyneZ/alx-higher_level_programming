@@ -1,5 +1,6 @@
 #!/usr/bin/node
-// Gets the title of a Star wars film using the Star wars API
+// Gets the count of a Star wars films with “Wedge Antilles”
+//  from the Star wars API
 
 const request = require('request');
 
